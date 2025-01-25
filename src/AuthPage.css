@@ -1,0 +1,113 @@
+.home {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(47, 47, 165);
+  padding: 20px;
+  color: white;
+}
+
+.logo {
+  font-size: 50px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.white {
+  color: white; /* Цвет для "шу" */
+}
+
+.pink {
+  color: rgb(266, 87, 154); /* Цвет для "meet" */
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+ 
+.auth-form {
+  width: 100%; /* Форма займет всю доступную ширину контейнера */
+  max-width: 350px; /* Максимальная ширина формы */
+  padding: 20px;
+  background-color: rgb(159, 205, 255);
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.login-cont {
+  color: black;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; 
+  margin-bottom: 10px;
+}
+
+.password-cont {
+  color: black;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; 
+  margin-bottom: 10px;
+}
+  
+input {
+  width: 150;             /* Ширина 100%, чтобы поле занимало всю доступную ширину */
+  padding: 12px;           /* Добавляем внутренние отступы */
+  font-size: 14px;         /* Увеличиваем размер шрифта для лучшего восприятия */
+  border: 2px solid #ccc; /* Цвет границы */
+  border-radius: 5px;      /* Скругление углов */
+  box-sizing: border-box;  /* Чтобы padding не увеличивал ширину поля */
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(266, 87, 154);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+  
+au-button:hover {
+  background-color: rgb(47, 47, 165);
+}
+
+.reg {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+    gap: 10px;
+}
+
+.or {
+  color: white;
+  font-size: 18px;
+  margin: 0px;
+}
+  
+.reg-link {
+  color: white;
+  font-size: 18px;
+  margin: 0px;
+  cursor: pointer;
+}
