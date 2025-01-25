@@ -1,0 +1,93 @@
+.home {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(47, 47, 165);
+    padding: 20px;
+    color: white;
+    margin-bottom: 50px;
+  }
+  
+  .logo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  
+  .white {
+    color: white; /* Цвет для "шу" */
+  }
+  
+  .pink {
+    color: rgb(266, 87, 154); /* Цвет для "meet" */
+  }
+
+  .reg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(159, 205, 255);
+    width: 500px;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .reg-form {
+    width: 100%; /* Форма займет всю доступную ширину контейнера */
+    max-width: 450px; /* Максимальная ширина формы */
+    padding: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    gap: 40px;
+    margin: 0 auto;
+  }
+  
+  .form-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .send-code-btn {
+    background-color: white;
+    color: rgb(266, 87, 154);
+    padding: 3px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .register-btn {
+    margin-top: 10px;
+    background-color: rgb(266, 87, 154);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .register-btn:hover {
+    background-color: rgb(47, 47, 165);
+  }
+  

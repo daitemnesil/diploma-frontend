@@ -1,0 +1,201 @@
+.home {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(47, 47, 165);
+    color: white;
+    height: 70px;
+  }
+  
+  .logo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  
+  .white {
+    color: white; /* Цвет для "шу" */
+  }
+  
+  .pink {
+    color: rgb(266, 87, 154); /* Цвет для "meet" */
+  }
+
+  .login-button {
+    padding: 10px 20px;
+    background-color: rgb(266, 87, 154);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-right: 50px;
+
+  }
+  
+  .login-button:hover {
+    background-color: rgb(159, 205, 255);
+  }
+  
+  .title-with-image {
+    display: flex;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center;
+    width: 100%; /* Занимает всю ширину */
+    height: auto; /* Высота подстраивается */
+    margin-top: 100px;
+    position: relative; /* Для корректного позиционирования дочерних элементов */
+    box-sizing: border-box;
+  }
+  
+  .text-container {
+    margin-left: 150px; /* Отступ текста от левого края */
+    z-index: 1;
+    max-width: 600px; 
+  }
+  
+  .main-title-home {
+    text-align: left;
+    font-size: 70px;
+    color: rgb(266, 87, 154);
+    font-weight: bold;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    white-space: nowrap;
+  }
+  
+  .title-image {
+    position: relative;
+    margin-right: 150px; /* Отступ от правого края */
+    width: 800px; /* Ширина картинки */
+    height: auto; /* Сохраняем пропорции картинки */
+    object-fit: contain; /* Сохраняем пропорции и адаптируем размер */
+    z-index: 0;
+  }
+
+  .main-func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(159, 205, 255);
+    margin-top: 100px;
+  }
+
+  .func-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;                /* Расстояние между прямоугольниками */
+  }
+  
+  .meet {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    flex-direction: column; /* Опционально: элементы будут выравниваться вертикально */
+    justify-content: center; /* Выравниваем элементы по главной оси */
+    align-items: center; /* Выравниваем элементы по поперечной оси */
+    background-color: white;
+    width: 450px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .meet-image {
+    width: 130px;  /* Ширина картинки */
+    height: auto;  /* Высота будет автоматически пропорциональна ширине */
+    margin-top: 20px;
+  }
+
+  .meet-title {
+    font-size: 20px;
+    color: rgb(266, 87, 154);
+    font-weight: bold;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 10px;
+  } 
+
+  .meet-text {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .deep {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    flex-direction: column; /* Опционально: элементы будут выравниваться вертикально */
+    justify-content: center; /* Выравниваем элементы по главной оси */
+    align-items: center; /* Выравниваем элементы по поперечной оси */
+    background-color: white;
+    width: 450px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .deep-image {
+    justify-content: center;
+    width: 130px;  /* Ширина картинки */
+    height: auto;  /* Высота будет автоматически пропорциональна ширине */
+    margin-top: 20px;
+  }
+
+  .deep-title {
+    font-size: 20px;
+    color: rgb(266, 87, 154);
+    font-weight: bold;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 10px;
+  } 
+
+  .deep-text {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .sec {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    flex-direction: column; /* Опционально: элементы будут выравниваться вертикально */
+    justify-content: center; /* Выравниваем элементы по главной оси */
+    align-items: center; /* Выравниваем элементы по поперечной оси */
+    background-color: white;
+    width: 450px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .sec-image {
+    width: 130px;  /* Ширина картинки */
+    height: auto;  /* Высота будет автоматически пропорциональна ширине */
+    margin-top: 20px;
+  }
+
+  .sec-title {
+    font-size: 20px;
+    color: rgb(266, 87, 154);
+    font-weight: bold;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 10px;
+  } 
+
+  .sec-text {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    margin: 0; /* Убираем отступы вокруг заголовка */
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }

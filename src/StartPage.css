@@ -1,0 +1,247 @@
+.start {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(47, 47, 165);
+    color: white;
+    height: 70px;
+  }
+  
+  .logo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  
+  .white {
+    color: white; /* Цвет для "шу" */
+  }
+  
+  .pink {
+    color: rgb(266, 87, 154); /* Цвет для "meet" */
+  }
+
+  .profile-button {
+    padding: 10px 20px;
+    background-color: rgb(266, 87, 154);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-right: 50px;
+  }
+  
+  .profile-button:hover {
+    background-color: rgb(159, 205, 255);
+  }
+
+  .title-start {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .main-title {
+    text-align: center;
+    font-size: 70px;
+    color: black;
+    font-weight: bold;
+    margin: 0; 
+  }
+
+  .less-title {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(159, 205, 255);
+    font-weight: bold;
+    margin: 0; 
+  }
+
+  .func-cont {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 60px; 
+    margin-top: 50px;
+   
+  }
+  
+  .new-meet-button {
+    padding: 10px 20px;
+    background-color: rgb(266, 87, 154);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .new-meet-button:hover {
+    background-color: rgb(47, 47, 165);
+  }
+  
+  .join-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+  }
+  
+  .join-input {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 200px; 
+    padding: 10px 20px;
+  }
+  
+  .join-button {
+    padding: 10px 20px;
+    background-color: rgb(266, 87, 154);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .join-button:hover {
+    background-color: rgb(47, 47, 165);
+  }
+  
+  .func-cont2 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 60px; 
+    margin-top: 50px;
+  }
+
+  .plan-button {
+    padding: 10px 20px;
+    background-color: rgb(159, 205, 255);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .plan-button:hover {
+    background-color: rgb(47, 47, 165);
+  }
+
+  .hist-button {
+    padding: 10px 20px;
+    background-color: rgb(159, 205, 255);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .hist-button:hover {
+    background-color: rgb(47, 47, 165);
+  }
+
+  .carousel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+    height: 300px;
+    position: relative;
+    margin-top: 50px;
+  }
+  
+  .carousel-slide {
+    width: 100%; /* Ширина области слайдов */
+    height: auto;
+    overflow: hidden; /* Скрываем контент за пределами области */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  
+
+  .carousel-image {
+    width: auto; /* Картинка занимает всю ширину */
+    height: 200px;
+    border-radius: 10px;
+    /* z-index: 0; */
+  }
+  
+  .carousel-text {
+    margin-top: 20px;
+    /* position: absolute; */
+    z-index: 1;
+    color: white;
+    padding: 0px;
+    max-width: 50%; /* Ограничиваем ширину текста */
+    text-align: center;
+  }
+
+  .carousel-text h2 {
+    font-size: 20px;
+    color: rgb(266, 87, 154);
+    font-weight: bold;
+    margin: 0; 
+  }
+
+  .carousel-text p {
+    font-size: 16px; 
+    color: black;
+    text-align: center;
+    margin: 0; 
+    margin-top: 5px;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .arrow-left {
+    left: 10px;
+  }
+  
+  .arrow-right {
+    right: 10px;
+  }
+  
+  .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
