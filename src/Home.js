@@ -28,7 +28,6 @@ const Home = () => {
         <img className="title-image" src="/homeimg.png" alt="Image" />
       </div>
 
-
       {/* Главный функционал */}
       <div className="main-func">
         <div className="func-container">
