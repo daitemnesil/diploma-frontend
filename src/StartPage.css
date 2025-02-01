@@ -8,7 +8,8 @@
     align-items: center;
     background-color: rgb(47, 47, 165);
     color: white;
-    height: 70px;
+    height: 100px;
+    margin-bottom: 50px;
   }
   
   .logo {
@@ -236,7 +237,6 @@
   .arrow-left {
     left: 10px;
   }
-  
   .arrow-right {
     right: 10px;
   }

@@ -1,0 +1,133 @@
+.Profile {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(47, 47, 165);
+    color: white;
+    height: 100px;
+    margin-bottom: 50px;
+  }
+  
+  .logo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  
+  .white {
+    color: white; /* Цвет для "шу" */
+  }
+  
+  .pink {
+    color: rgb(266, 87, 154); /* Цвет для "meet" */
+  }
+
+
+.user-profile {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgb(159, 205, 255);
+    border-radius: 10px;
+    background-color: rgb(159, 205, 255);
+  }
+  
+  .user-profile h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(266, 87, 154);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group1{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .form-group1 label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .photo-section input {
+    margin-top: 10px;
+  }
+  
+  .profile-photo {
+    display: block;
+    margin-top: 10px;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+  }
+  
+  .initials-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(47, 47, 165);
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* .button-change {
+    display: flex;
+    justify-content: center;
+  } */
+  
+  .edit-button,
+  .save-button,
+  .cancel-button {
+    width: 48%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: rgb(47, 47, 165);
+    color: white;
+  }
+  
+  .save-button {
+    background-color: rgb(266, 87, 154);
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: rgb(159, 205, 255);
+    color: white;
+  }
+  

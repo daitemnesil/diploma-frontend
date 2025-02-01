@@ -7,12 +7,12 @@ const StartPage = () => {
   const navigate = useNavigate();
 
   const handleProf = () => {
-    navigate('/');
+    navigate('/profile');
   };
 
   // Обработка кнопки перехода на SetMeet
   const NewMeet = () => {
-    navigate('/set-meet'); // Переход на страницу SetMeet
+    navigate('/settings'); // Переход на страницу SetMeet
   };
 
   // Обработка кнопки "Присоединиться"

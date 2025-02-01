@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './RegPage.css'; 
 import { useNavigate } from 'react-router-dom'; 
+import { sendCode, registerUser } from './api';
 
 const RegisterPage = () => {
   const [firstName, setFirstName] = useState('');
@@ -10,13 +11,34 @@ const RegisterPage = () => {
   const [code, setCode] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isCodeSent, setIsCodeSent] = useState(false);
 
    // Регулярное выражение для проверки формата почты
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=<>?])[A-Za-z\d!@#$%^&*()_\-+=<>?]{8,}$/; // Регулярное выражение для проверки пароля
 
   const navigate = useNavigate(); 
-  const handleRegister = () => {
+
+  const handleSendCode = async () => {
+    if (!emailPattern.test(email)) {
+      alert('Введите корректный адрес электронной почты.');
+      return;
+    }
+
+    try {
+      const response = await sendCode(firstName, lastName, middleName, email);
+      if (response.success) {
+        alert('Код отправлен на вашу почту!');
+        setIsCodeSent(true);
+      } else {
+        alert(response.message || 'Ошибка при отправке кода. Попробуйте снова.');
+      }
+    } catch (error) {
+      alert('Ошибка сети: ' + error.message);
+    }
+  };
+
+  const handleRegister = async () => {
     if (
       !firstName.trim() ||
       !lastName.trim() ||
@@ -41,49 +63,50 @@ const RegisterPage = () => {
       alert('Пароли не совпадают!');
       return;
     }
-    navigate('/auth');
-  };
-  
-  const handleSendCode = () => {
-    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Код отправлен на вашу почту!');
-    } else {
-      alert('Введите корректный адрес электронной почты для отправки кода.');
+    // navigate('/auth');
+    try {
+      const response = await registerUser(email, code, password);
+
+      if (response.success) {
+        alert('Регистрация успешна!');
+        navigate('/auth'); 
+      } else {
+        alert(response.message || 'Ошибка при регистрации. Проверьте код и попробуйте снова.');
+      }
+    } catch (error) {
+      alert('Ошибка сети: ' + error.message);
     }
   };
 
   const goToHome = () => {
-    // Переход на страницу регистрации
     navigate('/');
   };
 
   return (
-    <div className="register">
-         <div className="home">
+    <div className="Register">
       {/* Header */}
-      <header className="header">
-        <div className="logo">
-          <p className="home-link" onClick={goToHome}>
-            <span className="white">шу</span><span className="pink">meet</span>
-          </p>
-        </div>
-      </header>
-         </div>
+        <header className="header">
+          <div className="logo">
+            <p className="home-link" onClick={goToHome}>
+              <span className="white">шу</span><span className="pink">meet</span>
+            </p>
+          </div>
+        </header>
 
-    <div className="reg-container">
-      <form className="reg-form">
-       {/* Поле для имени */}
-        <div className="form-group">
-          <label htmlFor="firstName">Имя</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Введите имя"
-            required
-          />
-        </div>
+      <div className="reg-container">
+        <form className="reg-form">
+          {/* Поле для имени */}
+          <div className="form-group">
+            <label htmlFor="firstName">Имя</label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="Введите имя"
+              required
+            />
+          </div>
 
         {/* Поле для фамилии */}
         <div className="form-group">
@@ -125,9 +148,6 @@ const RegisterPage = () => {
 
          {/* Поле для кода подтверждения */}
          <div className="form-group code-group">
-         {/* <button type="button" className="send-code-btn" onClick={handleSendCode}>
-            Отправить код
-          </button> */}
           <p className="send-code-btn" onClick={handleSendCode}>Отправить код</p>
           <input
             type="text"
