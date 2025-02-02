@@ -27,6 +27,7 @@ const RegisterPage = () => {
 
     try {
       const response = await sendCode(firstName, lastName, middleName, email);
+      console.log("response code", response)
       if (response.success) {
         alert('Код отправлен на вашу почту!');
         setIsCodeSent(true);
