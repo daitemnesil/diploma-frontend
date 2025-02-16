@@ -15,10 +15,10 @@ const AuthPage = () => {
       const data = await loginUser(login, password); // Отправляем запрос к API
       console.log("Успешный вход:", data);
 
-      // Сохраняем токен в localStorage (если API возвращает токен)
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-      }
+      // // Сохраняем токен в localStorage (если API возвращает токен)
+      // if (data.token) {
+      //   localStorage.setItem('token', data.token);
+      // }
 
       navigate('/start'); // Перенаправляем пользователя
     } catch (err) {

@@ -52,22 +52,19 @@ const RegisterPage = () => {
       alert('Пожалуйста, заполните все поля!');
       return;
     }
-
     if (!passwordRegex.test(password)) {
       alert(
         'Пароль должен быть не менее 8 символов, содержать хотя бы 1 заглавную букву, 1 цифру и 1 специальный символ!'
       );
       return;
     }
-
     if (password !== confirmPassword) {
       alert('Пароли не совпадают!');
       return;
     }
-    // navigate('/auth');
     try {
       const response = await registerUser(email, code, password);
-
+      console.log("response code", response)
       if (response.success) {
         alert('Регистрация успешна!');
         navigate('/auth'); 

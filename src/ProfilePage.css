@@ -119,15 +119,29 @@
   .edit-button {
     background-color: rgb(47, 47, 165);
     color: white;
-  }
-  
-  .save-button {
-    background-color: rgb(266, 87, 154);
-    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
   }
   
   .cancel-button {
-    background-color: rgb(159, 205, 255);
+    background-color: rgb(47, 47, 165);
     color: white;
   }
   
+    
+  .save-button {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .save-button.active {
+    background-color: rgb(266, 87, 154);
+    cursor: pointer;
+  }
+  
+  .save-button.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }

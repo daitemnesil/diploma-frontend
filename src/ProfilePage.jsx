@@ -1,21 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProfilePage.css";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import { updateUserData, getUserData } from "./api"; 
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState({
-    firstName: "Иван",
-    lastName: "Александрович",
-    middleName: "Иванович",
-    email: "ivan.ivanov@example.com",
-    birthDate: "1990-01-01",
-    workplace: "Google",
-    photo: "",
-  });
-
+  // const [userData, setUserData] = useState({
+  //   firstName: "Иван",
+  //   lastName: "Александрович",
+  //   middleName: "Иванович",
+  //   email: "ivan.ivanov@example.com",
+  //   birthDate: "1990-01-01",
+  //   workplace: "Google",
+  //   photo: "",
+  // });
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // Флаг режима редактирования
-  const [tempData, setTempData] = useState({ ...userData }); // Временные данные для отмены изменений
+  // Временные данные для отмены изменений
+  // const [tempData, setTempData] = useState({ ...userData }); 
+  const [tempData, setTempData] = useState(null);
+  const [password, setPassword] = useState(""); // Поле пароля
+  const [isPasswordEntered, setIsPasswordEntered] = useState(false); // Флаг ввода пароля
 
+  // Загружаем данные пользователя
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const data = await getUserData(); 
+        console.log(data)
+        setUserData(data);
+        setTempData(data);
+      } catch (error) {
+        console.error("Ошибка загрузки профиля:", error);
+        // navigate("/login");
+      }
+    };
+    loadUserData();
+  }, [navigate]);
+
+  if (!userData) return <div>Загрузка...</div>;
+
+  // Обработчик изменения данных
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTempData((prevData) => ({
@@ -24,44 +49,62 @@ const ProfilePage = () => {
     }));
   };
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setTempData((prevData) => ({
-          ...prevData,
-          photo: reader.result, // Сохраняем фото как base64
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // Изменение фото
+  // const handlePhotoChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => setTempData((prev) => ({ ...prev, photo: reader.result }));
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
+  // Редактирование и отмена
   const handleEdit = () => {
     setIsEditing(true); // Включить режим редактирования
   };
-
   const handleCancel = () => {
-    setTempData({ ...userData }); // Восстановить данные
+    setTempData(userData); // Восстановить данные
+    setPassword(""); // Очистить пароль при отмене
+    setIsPasswordEntered(false);
     setIsEditing(false); // Выйти из режима редактирования
   };
 
-  const handleSave = (e) => {
+  // Сохранение данных
+  const handleSave = async (e) => {
     e.preventDefault();
-    setUserData({ ...tempData }); // Сохранить изменения
-    setIsEditing(false); // Выйти из режима редактирования
-    alert("Изменения сохранены!");
+    if (!isPasswordEntered) {
+      alert("Введите пароль для подтверждения изменений.");
+      return;
+    }
+    try {
+      const updatedUser = { ...tempData, password };
+      await updateUserData({ updatedUser, password });
+      setUserData(updatedUser); // Сохранить изменения
+      setIsEditing(false); // Выйти из режима редактирования
+      setPassword(""); // Очистить поле пароля после сохранения
+      setIsPasswordEntered(false);
+      alert("Изменения сохранены!");
+    } catch (error) {
+      alert("Ошибка обновления профиля!");
+    }
   };
 
-  const getInitials = () => {
-    const { firstName, lastName } = userData;
-    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
-  };
+  const getInitials = () => `${userData.firstName[0]}${userData.lastName[0]}`.toUpperCase();
+
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  //   setIsPasswordEntered(e.target.value.trim().length > 0);
+  // };
+
+  // const getInitials = () => {
+  //   const { firstName, lastName } = userData;
+  //   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  // };
   
-  const navigate = useNavigate();
+ 
   const goToStart = () => {
-    navigate("/start"); // Здесь "/start" — путь к нужной странице
+    navigate("/start"); 
   };
   
   return (
@@ -80,7 +123,7 @@ const ProfilePage = () => {
         <form onSubmit={handleSave}>
 
           {/* Фото профиля или инициалы */}
-          <div className="form-group1 photo-section">
+          {/* <div className="form-group1 photo-section">
             <label htmlFor="photo">Фото профиля:</label>
             {isEditing ? (
              <input type="file" id="photo" onChange={handlePhotoChange} />
@@ -89,7 +132,7 @@ const ProfilePage = () => {
             ) : (
               <div className="initials-box">{getInitials()}</div>
             )}
-          </div>
+          </div> */}
 
           {/* ФИО */}
           <div className="form-group">
@@ -98,7 +141,7 @@ const ProfilePage = () => {
               type="text"
               id="lastName"
               name="lastName"
-              value={isEditing ? tempData.lastName : userData.lastName}
+              value={tempData.lastName}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -110,7 +153,7 @@ const ProfilePage = () => {
               type="text"
               id="firstName"
               name="firstName"
-              value={isEditing ? tempData.firstName : userData.firstName}
+              value={tempData.firstName}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -122,7 +165,7 @@ const ProfilePage = () => {
               type="text"
               id="middleName"
               name="middleName"
-              value={isEditing ? tempData.middleName : userData.middleName}
+              value={tempData.middleName}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -135,7 +178,7 @@ const ProfilePage = () => {
               type="email"
               id="email"
               name="email"
-              value={isEditing ? tempData.email : userData.email}
+              value={tempData.email}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -148,7 +191,7 @@ const ProfilePage = () => {
               type="date"
               id="birthDate"
               name="birthDate"
-              value={isEditing ? tempData.birthDate : userData.birthDate}
+              value={tempData.birthDate}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -161,22 +204,39 @@ const ProfilePage = () => {
               type="text"
               id="workplace"
               name="workplace"
-              value={isEditing ? tempData.workplace : userData.workplace}
+              value={tempData.workplace}
               onChange={handleChange}
               disabled={!isEditing}
             />
           </div>
 
+          {/* Поле для ввода пароля */}
+          {isEditing && (
+            <div className="form-group">
+              <label htmlFor="password">Введите пароль для сохранения:</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Введите пароль"
+                required
+              />
+            </div>
+          )}
+
           {/* Управление кнопками */}
           {!isEditing ? (
-            
-              <button type="button" className="edit-button" onClick={handleEdit}>
-                Изменить
-              </button>
-            
-            ) : (
+            <button type="button" className="edit-button" onClick={handleEdit}>
+              Изменить
+            </button>
+          ) : (
             <div className="button-group">
-              <button type="submit" className="save-button">
+              <button 
+              type="submit" 
+              className={`save-button ${isPasswordEntered ? "active" : "disabled"}`}
+              disabled={!isPasswordEntered}
+              >
                 Сохранить изменения
               </button>
               <button type="button" className="cancel-button" onClick={handleCancel}>
